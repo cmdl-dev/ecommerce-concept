@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { closingCart } from "../actions/allActions";
+import { closingCart, removeItem } from "../actions/allActions";
 
 class CartPopup extends Component {
     //
+    handleRemoveItem = e => {
+        console.log(e.target.getAttribute("data-index"));
+        this.props.removeItem(e.target.getAttribute("data-index"));
+    };
     componentDidUpdate() {
         if (this.props.globalState.isCartOpen) {
-            console.log(this.props.globalState.isCartOpen);
             const cartPopupElement = document.getElementById("cart-popup");
             const openCartEvent = event => {
                 var clickedInside = cartPopupElement.contains(event.target);
@@ -34,30 +37,25 @@ class CartPopup extends Component {
                 </div>
                 <div className="cart-items">
                     <div className="item-container">
-                        <div className="item">
-                            <img src={this.props.imgRoute} alt="Yeezy Boost" />
-                            <div className="delete-btn">
-                                <div className="circle">X</div>
-                            </div>
-                        </div>
-                        <div className="item">
-                            <img src={this.props.imgRoute} alt="Yeezy Boost" />
-                            <div className="delete-btn">
-                                <div className="circle">X</div>
-                            </div>
-                        </div>
-                        <div className="item">
-                            <img src={this.props.imgRoute} alt="Yeezy Boost" />
-                            <div className="delete-btn">
-                                <div className="circle">X</div>
-                            </div>
-                        </div>
-                        <div className="item">
-                            <img src={this.props.imgRoute} alt="Yeezy Boost" />
-                            <div className="delete-btn">
-                                <div className="circle">X</div>
-                            </div>
-                        </div>
+                        {this.props.globalState.cartItems.map((item, indx) => {
+                            return (
+                                <div key={indx} className="item">
+                                    <img
+                                        src={this.props.imgRoute}
+                                        alt="Yeezy Boost"
+                                    />
+                                    <div className="delete-btn">
+                                        <div
+                                            data-index={indx}
+                                            className="circle"
+                                            onClick={this.handleRemoveItem}
+                                        >
+                                            X
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
                 <div className="product-total">
@@ -84,6 +82,7 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps,
     {
-        closingCart
+        closingCart,
+        removeItem
     }
 )(CartPopup);

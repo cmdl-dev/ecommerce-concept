@@ -64719,21 +64719,28 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*!********************************************!*\
   !*** ./resources/js/actions/allActions.js ***!
   \********************************************/
-/*! exports provided: openingCart, closingCart */
+/*! exports provided: openingCart, closingCart, removeItem */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openingCart", function() { return openingCart; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closingCart", function() { return closingCart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeItem", function() { return removeItem; });
 var openingCart = function openingCart() {
   return {
-    type: 'OPEN_CART'
+    type: "OPEN_CART"
   };
 };
 var closingCart = function closingCart() {
   return {
-    type: 'CLOSE_CART'
+    type: "CLOSE_CART"
+  };
+};
+var removeItem = function removeItem(index) {
+  return {
+    type: "REMOVE_ITEM",
+    index: index
   };
 };
 
@@ -65047,13 +65054,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -65065,19 +65074,33 @@ function (_Component) {
   _inherits(CartPopup, _Component);
 
   function CartPopup() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, CartPopup);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(CartPopup).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(CartPopup)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "handleRemoveItem", function (e) {
+      console.log(e.target.getAttribute("data-index"));
+
+      _this.props.removeItem(e.target.getAttribute("data-index"));
+    });
+
+    return _this;
   }
 
   _createClass(CartPopup, [{
     key: "componentDidUpdate",
-    //
     value: function componentDidUpdate() {
-      var _this = this;
+      var _this2 = this;
 
       if (this.props.globalState.isCartOpen) {
-        console.log(this.props.globalState.isCartOpen);
         var cartPopupElement = document.getElementById("cart-popup");
 
         var openCartEvent = function openCartEvent(event) {
@@ -65086,7 +65109,7 @@ function (_Component) {
           if (clickedInside) {
             console.log("You clicked in side");
           } else {
-            _this.props.closingCart();
+            _this2.props.closingCart();
 
             document.removeEventListener("click", openCartEvent);
             console.log("You cliked outside");
@@ -65099,6 +65122,8 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         id: "cart-popup",
         className: this.props.globalState.isCartOpen ? "active" : ""
@@ -65110,43 +65135,21 @@ function (_Component) {
         className: "cart-items"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.props.imgRoute,
-        alt: "Yeezy Boost"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "delete-btn"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "circle"
-      }, "X"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.props.imgRoute,
-        alt: "Yeezy Boost"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "delete-btn"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "circle"
-      }, "X"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.props.imgRoute,
-        alt: "Yeezy Boost"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "delete-btn"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "circle"
-      }, "X"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.props.imgRoute,
-        alt: "Yeezy Boost"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "delete-btn"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "circle"
-      }, "X"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.globalState.cartItems.map(function (item, indx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: indx,
+          className: "item"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: _this3.props.imgRoute,
+          alt: "Yeezy Boost"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "delete-btn"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          "data-index": indx,
+          className: "circle",
+          onClick: _this3.handleRemoveItem
+        }, "X")));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-total"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "title"
@@ -65176,7 +65179,8 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
-  closingCart: _actions_allActions__WEBPACK_IMPORTED_MODULE_2__["closingCart"]
+  closingCart: _actions_allActions__WEBPACK_IMPORTED_MODULE_2__["closingCart"],
+  removeItem: _actions_allActions__WEBPACK_IMPORTED_MODULE_2__["removeItem"]
 })(CartPopup));
 
 /***/ }),
@@ -65211,24 +65215,45 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appStateReducer", function() { return appStateReducer; });
 var initalState = {
-  isCartOpen: false
+  isCartOpen: false,
+  cartItems: [{
+    name: "blue"
+  }, {
+    name: "lemon"
+  }, {
+    name: "orange"
+  }, {
+    name: "green"
+  }, {
+    name: "yellow"
+  }]
 };
 var newState;
 var appStateReducer = function appStateReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initalState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
+  console.log(action.type);
 
   switch (action.type) {
-    case 'OPEN_CART':
+    case "OPEN_CART":
       newState = Object.assign({}, state, {
         isCartOpen: true
       });
       return newState;
       break;
 
-    case 'CLOSE_CART':
+    case "CLOSE_CART":
       newState = Object.assign({}, state, {
         isCartOpen: false
+      });
+      return newState;
+      break;
+
+    case "REMOVE_ITEM":
+      state.cartItems.splice(action.index, 1);
+      var newCartItems = state.cartItems;
+      newState = Object.assign({}, state, {
+        cartItems: newCartItems
       });
       return newState;
       break;
