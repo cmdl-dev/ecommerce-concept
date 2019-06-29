@@ -66091,7 +66091,7 @@ function (_Component) {
         href: "#",
         className: "cart-link",
         onClick: this.props.openingCart
-      }, "Cart", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4"));
+      }, "Cart", this.props.globalState.cartItems.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " ", this.props.globalState.cartItems.length, " ") : "");
     }
   }]);
 
@@ -66145,6 +66145,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+/**
+ * FIXME: Fix a bug when when the cart popup is open and you clock on the cart button the cart will close,
+ * but when you click again the cart doesn't open until you click on somewhere else on the screen
+ */
 
 var CartPopup =
 /*#__PURE__*/

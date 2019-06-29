@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { closingCart, removeItem } from "../actions/allActions";
 
+/**
+ * FIXME: Fix a bug when when the cart popup is open and you clock on the cart button the cart will close,
+ * but when you click again the cart doesn't open until you click on somewhere else on the screen
+ */
 class CartPopup extends Component {
     //
     handleRemoveItem = e => {
