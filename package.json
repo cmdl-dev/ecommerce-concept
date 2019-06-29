@@ -26,6 +26,7 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
+        "numeral": "^2.0.6",
         "postcss-css-variables": "^0.13.0",
         "react-redux": "^7.0.3",
         "redux": "^4.0.1",

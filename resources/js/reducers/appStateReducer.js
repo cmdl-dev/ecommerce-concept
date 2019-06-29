@@ -1,12 +1,8 @@
+import numeral from "numeral";
 const initalState = {
     isCartOpen: false,
-    cartItems: [
-        { name: "blue" },
-        { name: "lemon" },
-        { name: "orange" },
-        { name: "green" },
-        { name: "yellow" }
-    ]
+    cartItems: [],
+    totalPrice: 0
 };
 
 let newState;
@@ -26,11 +22,23 @@ export const appStateReducer = (state = initalState, action) => {
             });
             return newState;
             break;
+        case "ADD_ITEM":
+            newState = Object.assign({}, state, {
+                cartItems: [...state.cartItems, action.item],
+                totalPrice: numeral(state.totalPrice)
+                    .add(action.item.price)
+                    .format("0.00")
+            });
+            return newState;
+            break;
         case "REMOVE_ITEM":
-            state.cartItems.splice(action.index, 1);
+            const removedItem = state.cartItems.splice(action.index, 1)[0];
             const newCartItems = state.cartItems;
             newState = Object.assign({}, state, {
-                cartItems: newCartItems
+                cartItems: newCartItems,
+                totalPrice: numeral(state.totalPrice)
+                    .subtract(removedItem.price)
+                    .format("0.00")
             });
             return newState;
             break;

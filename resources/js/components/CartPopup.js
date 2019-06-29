@@ -60,11 +60,15 @@ class CartPopup extends Component {
                 </div>
                 <div className="product-total">
                     <div className="title">Total</div>
-                    <div className="number">x4</div>
+                    <div className="number">
+                        x{this.props.globalState.cartItems.length}
+                    </div>
                 </div>
                 <div className="price-total">
                     <div className="title">Total</div>
-                    <div className="number">$3,000</div>
+                    <div className="number">
+                        ${this.props.globalState.totalPrice}
+                    </div>
                 </div>
                 <div className="checkout">
                     <div className="title">Checkout</div>

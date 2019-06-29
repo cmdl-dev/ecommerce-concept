@@ -34,7 +34,9 @@ E-Commerce Store
                 around the globe, this adidas Yeezy Boost 350 v2 "True Form" released
                 in limited quantities exclusively in Europe and Russia on March 16, 2019.
             </p>
-            <div id="productAddToCart"></div>
+            <div id="productAddToCart"
+                data-imgRoute={{ asset('img/products/adidas-yeezy-boost-white.png') }}
+                data-name="{{$productName}}" />
             {{-- Start of Detail--}}
             <div class="detail-section">
 

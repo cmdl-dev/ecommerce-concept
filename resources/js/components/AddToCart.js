@@ -1,8 +1,13 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-export default class AddToCart extends Component {
+import { connect } from "react-redux";
+import { addItem } from "../actions/allActions";
+
+class AddToCart extends Component {
     state = {
+        itemName: "",
+        imgRoute: "",
         selectedSize: "",
+        price: 220.0,
         sizes: [
             4,
             4.5,
@@ -22,6 +27,12 @@ export default class AddToCart extends Component {
             11.5
         ]
     };
+    componentDidMount() {
+        this.setState({
+            itemName: this.props.itemName,
+            imgRoute: this.props.imgRoute
+        });
+    }
     allSizes = () => {
         return this.state.sizes.map((size, key) => {
             return (
@@ -45,6 +56,14 @@ export default class AddToCart extends Component {
     clickedAddToCartBtn = () => {
         if (this.state.selectedSize !== "") {
             console.log(`We added size ${this.state.selectedSize} to the cart`);
+            // check the database to verify that the item was successfully added to the users' cart
+            const item = {
+                name: this.state.itemName,
+                imgRoute: this.state.imgRoute,
+                size: this.state.selectedSize,
+                price: this.state.price
+            };
+            this.props.addItem(item);
         } else {
             console.log("Please selected a size");
         }
@@ -79,7 +98,15 @@ export default class AddToCart extends Component {
         );
     }
 }
-const addToCart = document.getElementById("productAddToCart");
-if (addToCart) {
-    ReactDOM.render(<AddToCart />, addToCart);
-}
+
+const mapStateToProps = state => {
+    console.log(state);
+    return state;
+};
+
+export default connect(
+    mapStateToProps,
+    {
+        addItem
+    }
+)(AddToCart);
