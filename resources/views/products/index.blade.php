@@ -76,8 +76,9 @@ E-Commerce | All Products
 
         <button>Filter</button>
     </div>
-    <div class="all-proudcts-grid">
+    <div class="all-products-grid">
         @foreach ($productArray as $product)
+        <a href='/addidas/yeezy/yeezy-boost-350-white'>
             <div class="product-wrap">
                 <div class="product">
                     <div class="circle">
@@ -89,6 +90,7 @@ E-Commerce | All Products
                 </div>
                 <div class="price">$360.99</div>
             </div>
+        </a>
         @endforeach
     </div>
 </section>

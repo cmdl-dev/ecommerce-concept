@@ -12,7 +12,8 @@ class ProductController extends Controller
     }
     public function show($brand, $subCat, $slug){
         // return "$brand, $subCat, $slug";
-        return view('products/single');
+        $slugString = join(' ', explode('-',$slug));
+        return view('products/single', ['brand' => $brand, 'subCat' => $subCat, 'productName' => $slugString]);
     }
     public function newArrivals(){
         // return 'These are the new arrivals';

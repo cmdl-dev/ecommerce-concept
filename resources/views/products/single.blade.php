@@ -16,8 +16,8 @@ E-Commerce Store
     </div>
     <div class="product-detail">
         <div class="titles">
-            <div class="brand">Adidas</div>
-            <div class="product">Yeezy Boost 350 White</div>
+            <div class="brand">{{$brand}}</div>
+        <div class="product">{{$productName}}</div>
         </div>
         <div class="details">
             <p>

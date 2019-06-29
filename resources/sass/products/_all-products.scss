@@ -10,7 +10,7 @@
         height: 100vh;
         overflow-x: hidden;
         overflow-y: scroll;
-        button{
+        button {
             background: white;
             padding: 1rem;
             display: block;
@@ -26,13 +26,13 @@
             display: none;
 
             &:checked {
-                &+.title+.content {
+                & + .title + .content {
                     max-height: 300px;
                     overflow-x: hidden;
                     overflow-y: scroll;
                 }
 
-                &+.title:before {
+                & + .title:before {
                     transform: rotate(90deg);
                 }
             }
@@ -47,7 +47,7 @@
         .content {
             backface-visibility: hidden;
             transform: translateZ(0);
-            transition: all .2s;
+            transition: all 0.2s;
         }
 
         .title {
@@ -62,7 +62,7 @@
 
         .title:after,
         .title:before {
-            content: '';
+            content: "";
             position: absolute;
             right: 1.25em;
             top: 1.25em;
@@ -88,7 +88,7 @@
                 text-align: center;
             }
 
-            .brand{
+            .brand {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
                 grid-gap: 10px;
@@ -96,20 +96,20 @@
                 text-align: center;
             }
 
-            .price{
+            .price {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-gap: 10px;
                 list-style: none;
                 text-align: center;
-                input{
+                input {
                     font-size: 1.2rem;
                 }
-                .option:hover{
+                .option:hover {
                     background: $grey;
                 }
             }
-            .size{
+            .size {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-gap: 10px;
@@ -121,7 +121,7 @@
                 padding: 10px;
                 display: inline-block;
                 color: grey;
-                transition: all .2 ease-in-out;
+                transition: all 0.2 ease-in-out;
                 display: flex;
                 align-items: center;
                 cursor: pointer;
@@ -138,7 +138,7 @@
         }
     }
 
-    .all-proudcts-grid {
+    .all-products-grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         position: relative;
@@ -146,6 +146,10 @@
         padding: 0 20px;
         overflow-y: scroll;
 
+        a {
+            color: black;
+            text-decoration: none;
+        }
         .product-wrap {
             text-align: center;
 
@@ -156,7 +160,7 @@
             }
 
             .price {
-                font-size: .9rem;
+                font-size: 0.9rem;
             }
         }
 

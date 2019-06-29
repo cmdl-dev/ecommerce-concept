@@ -64881,7 +64881,7 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AddToCart)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      selectedSize: '',
+      selectedSize: "",
       sizes: [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5]
     });
 
@@ -64889,7 +64889,7 @@ function (_Component) {
       return _this.state.sizes.map(function (size, key) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: key,
-          className: "option ".concat(_this.state.selectedSize === size ? 'selected' : ''),
+          className: "option ".concat(_this.state.selectedSize === size ? "selected" : ""),
           onClick: _this.clickedSize.bind(null, size)
         }, size);
       });
@@ -64902,10 +64902,10 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "clickedAddToCartBtn", function () {
-      if (_this.state.selectedSize !== '') {
+      if (_this.state.selectedSize !== "") {
         console.log("We added size ".concat(_this.state.selectedSize, " to the cart"));
       } else {
-        console.log('Please selected a size');
+        console.log("Please selected a size");
       }
     });
 
@@ -64945,7 +64945,11 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AddToCart, null), document.getElementById('productAddToCart'));
+var addToCart = document.getElementById("productAddToCart");
+
+if (addToCart) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AddToCart, null), addToCart);
+}
 
 /***/ }),
 
@@ -65074,18 +65078,22 @@ function (_Component) {
 
       if (this.props.globalState.isCartOpen) {
         console.log(this.props.globalState.isCartOpen);
-        var cartPopupElement = document.getElementById('cart-popup');
-        document.addEventListener('click', function (event) {
+        var cartPopupElement = document.getElementById("cart-popup");
+
+        var openCartEvent = function openCartEvent(event) {
           var clickedInside = cartPopupElement.contains(event.target);
 
           if (clickedInside) {
-            console.log('You clicked in side');
+            console.log("You clicked in side");
           } else {
             _this.props.closingCart();
 
-            console.log('You cliked outside');
+            document.removeEventListener("click", openCartEvent);
+            console.log("You cliked outside");
           }
-        });
+        };
+
+        document.addEventListener("click", openCartEvent);
       }
     }
   }, {
@@ -65093,7 +65101,7 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         id: "cart-popup",
-        className: this.props.globalState.isCartOpen ? 'active' : ''
+        className: this.props.globalState.isCartOpen ? "active" : ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart-title"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
