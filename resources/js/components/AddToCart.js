@@ -29,6 +29,8 @@ class AddToCart extends Component {
         ]
     };
     componentDidMount() {
+        var elems = document.querySelectorAll(".collapsible");
+        M.Collapsible.init(elems, {});
         this.setState({
             itemName: this.props.itemName,
             imgRoute: this.props.imgRoute
@@ -100,6 +102,30 @@ class AddToCart extends Component {
                         Add To Cart
                     </div>
                 </div>
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header">Delivery</div>
+                        <div class="collapsible-body">
+                            <p>
+                                Overnight delivery by 8 a.m. to more ZIP Codes
+                                than FedEx Priority handling at every stage of
+                                transit for added reliability Up to three
+                                delivery attempts at no cost for added
+                                flexibility
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Refund Policy</div>
+                        <div class="collapsible-body">
+                            <p>
+                                We accept returns for store credit, within 3
+                                business days of receipt. Items must be tagged
+                                and in new/unworn condition. Read more here.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
             </div>
         );
     }

@@ -57,7 +57,9 @@
             data-imgRoute='{{ asset('img/products/adidas-yeezy-boost-white.png') }}'></div>
         {{-- End of the Cart--}}
     <script src="{{asset('/js/app.js')}}"></script>
-    @yield('javascript')
+    <script>
+        @yield('javascript')
+    </script>
     </div>
 </body>
 

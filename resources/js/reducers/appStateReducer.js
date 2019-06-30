@@ -1,8 +1,8 @@
 import numeral from "numeral";
 const initalState = {
     isCartOpen: false,
-    cartItems: [],
-    totalPrice: 0
+    cartItems: JSON.parse(localStorage.getItem("items")) || [],
+    totalPrice: JSON.parse(localStorage.getItem("total-price")) || 0
 };
 
 let newState;
@@ -29,6 +29,11 @@ export const appStateReducer = (state = initalState, action) => {
                     .add(action.item.price)
                     .format("0.00")
             });
+            localStorage.setItem("items", JSON.stringify(newState.cartItems));
+            localStorage.setItem(
+                "total-price",
+                JSON.stringify(newState.totalPrice)
+            );
             return newState;
             break;
         case "REMOVE_ITEM":
@@ -40,6 +45,11 @@ export const appStateReducer = (state = initalState, action) => {
                     .subtract(removedItem.price)
                     .format("0.00")
             });
+            localStorage.setItem("items", JSON.stringify(newState.cartItems));
+            localStorage.setItem(
+                "total-price",
+                JSON.stringify(newState.totalPrice)
+            );
             return newState;
             break;
         default:

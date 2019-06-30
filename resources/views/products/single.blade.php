@@ -37,42 +37,9 @@ E-Commerce Store
             <div id="productAddToCart"
                 data-imgRoute={{ asset('img/products/adidas-yeezy-boost-white.png') }}
                 data-name="{{$productName}}" />
-            {{-- Start of Detail--}}
-            <div class="detail-section">
-
-                <div class="detail">
-                    <input type="checkbox" class="toggle" id="delivery-dropdown">
-                    <label class='title' for="delivery-dropdown">Delivery</label>
-                    <div class="content">
-                        <p>
-                            Overnight delivery by 8 a.m. to more ZIP Codes than FedEx
-                            Priority handling at every stage of transit for added reliability
-                            Up to three delivery attempts at no cost for added flexibility
-                        </p>
-                    </div>
-                </div>
-            </div>
-            {{-- End of Detail--}}
-
-            {{-- Start of Refund--}}
-            <div class="detail-section">
-
-                <div class="detail">
-                    <input type="checkbox" class="toggle" id="refund-dropdown">
-                    <label class='title' for="refund-dropdown">Refund Policy</label>
-                    <div class="content">
-                        <p>
-                            We accept returns for store credit, within 3 business days of receipt.
-                            Items must be tagged and in new/unworn condition. Read more here.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            {{-- End of Refund--}}
         </div>
     </div>
 </section>
 @endsection
 @section('javascript')
-    
 @endsection

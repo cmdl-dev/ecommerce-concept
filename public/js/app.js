@@ -78380,6 +78380,8 @@ function (_Component) {
   _createClass(AddToCart, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var elems = document.querySelectorAll(".collapsible");
+      materialize_css__WEBPACK_IMPORTED_MODULE_2___default.a.Collapsible.init(elems, {});
       this.setState({
         itemName: this.props.itemName,
         imgRoute: this.props.imgRoute
@@ -78410,7 +78412,17 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "button",
         onClick: this.clickedAddToCartBtn
-      }, "Add To Cart")));
+      }, "Add To Cart")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        "class": "collapsible"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "collapsible-header"
+      }, "Delivery"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "collapsible-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Overnight delivery by 8 a.m. to more ZIP Codes than FedEx Priority handling at every stage of transit for added reliability Up to three delivery attempts at no cost for added flexibility"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "collapsible-header"
+      }, "Refund Policy"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "collapsible-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We accept returns for store credit, within 3 business days of receipt. Items must be tagged and in new/unworn condition. Read more here.")))));
     }
   }]);
 
@@ -78895,8 +78907,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var initalState = {
   isCartOpen: false,
-  cartItems: [],
-  totalPrice: 0
+  cartItems: JSON.parse(localStorage.getItem("items")) || [],
+  totalPrice: JSON.parse(localStorage.getItem("total-price")) || 0
 };
 var newState;
 var appStateReducer = function appStateReducer() {
@@ -78924,6 +78936,8 @@ var appStateReducer = function appStateReducer() {
         cartItems: [].concat(_toConsumableArray(state.cartItems), [action.item]),
         totalPrice: numeral__WEBPACK_IMPORTED_MODULE_0___default()(state.totalPrice).add(action.item.price).format("0.00")
       });
+      localStorage.setItem("items", JSON.stringify(newState.cartItems));
+      localStorage.setItem("total-price", JSON.stringify(newState.totalPrice));
       return newState;
       break;
 
@@ -78934,6 +78948,8 @@ var appStateReducer = function appStateReducer() {
         cartItems: newCartItems,
         totalPrice: numeral__WEBPACK_IMPORTED_MODULE_0___default()(state.totalPrice).subtract(removedItem.price).format("0.00")
       });
+      localStorage.setItem("items", JSON.stringify(newState.cartItems));
+      localStorage.setItem("total-price", JSON.stringify(newState.totalPrice));
       return newState;
       break;
 

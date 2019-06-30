@@ -304,6 +304,10 @@
   cursor: pointer;
   text-align: center;
 }
+.content-area.product-single-page .product-detail .collapsible {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
 .content-area.product-single-page .product-detail .detail-section {
   padding: 0;
 }

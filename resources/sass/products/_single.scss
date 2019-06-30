@@ -80,6 +80,10 @@
                 }
             }
         }
+        .collapsible {
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
 
         .detail-section {
             padding: 0;
