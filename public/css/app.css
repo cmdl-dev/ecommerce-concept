@@ -293,7 +293,7 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
 }
-.content-area.product-single-page .product-detail .add-to-cart .btn-area .btn {
+.content-area.product-single-page .product-detail .add-to-cart .btn-area .button {
   background: white;
   border: 1px solid #484c4f;
   padding: 1rem;
@@ -609,7 +609,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 97%;
+  width: 100%;
   padding: 20px;
   z-index: 10;
 }

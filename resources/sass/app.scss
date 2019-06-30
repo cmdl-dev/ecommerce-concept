@@ -1,24 +1,24 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
 
 // Pages
-@import 'pages/about';
-@import 'pages/home';
+@import "pages/about";
+@import "pages/home";
 // Products
-@import 'products/all-products';
-@import 'products/single';
+@import "products/all-products";
+@import "products/single";
 // Auth
-@import 'auth/account';
-@import 'auth/login_register';
+@import "auth/account";
+@import "auth/login_register";
 // Cart
-@import 'cart/place-order';
-@import 'cart/checkout';
+@import "cart/place-order";
+@import "cart/checkout";
 
 body {
     background: $grey;
@@ -37,7 +37,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 97%;
+    width: 100%;
     padding: 20px;
     z-index: 10;
 
@@ -56,7 +56,7 @@ header {
         font-size: 1rem;
         text-transform: uppercase;
         padding: 20px 0;
-        #cart-btn{
+        #cart-btn {
             display: inline-block;
         }
         a {
@@ -83,7 +83,6 @@ header {
                     align-items: center;
                     background: black;
                     border-radius: 50%;
-
                 }
             }
         }
@@ -93,13 +92,14 @@ header {
 .content-area {
     background: $grey;
     filter: blur(0px);
-    transition: filter .4s ease-in-out;
+    transition: filter 0.4s ease-in-out;
 
     &.cart-popup-active {
         filter: blur(15px);
     }
 
-    &.home-page {}
+    &.home-page {
+    }
 }
 
 #cart-popup {
@@ -112,7 +112,7 @@ header {
     display: grid;
     grid-template-columns: 5% 50% 1fr 1fr 1fr;
     transform: translate3d(0, 500px, 0);
-    transition: transform .4s ease-in-out;
+    transition: transform 0.4s ease-in-out;
 
     &.active {
         transform: translate3d(0, 0, 0);
@@ -168,7 +168,6 @@ header {
 
                 &:hover {
                     .circle {
-
                         background: red;
                         color: white;
                     }
@@ -183,7 +182,7 @@ header {
                 justify-content: center;
                 align-items: center;
                 border-radius: 50%;
-                transition: all .2s ease-in-out;
+                transition: all 0.2s ease-in-out;
             }
         }
     }
@@ -208,7 +207,6 @@ header {
             font-weight: 700;
             font-size: 2rem;
         }
-
     }
 
     .checkout {
@@ -241,7 +239,6 @@ header {
 }
 
 form {
-
     button {
         border: none;
         margin-bottom: 0 0 1rem;

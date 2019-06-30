@@ -6,6 +6,7 @@ import allReducers from "./reducers/allReducers";
 import CartBtn from "./components/CartBtn";
 import CartPopup from "./components/CartPopup";
 import AddToCart from "./components/AddToCart";
+import ModalInfo from "./components/ModalInfo";
 
 const store = createStore(allReducers);
 /**
@@ -41,5 +42,16 @@ if (addToCart) {
             <AddToCart itemName={itemName} imgRoute={imgRoute} />
         </Provider>,
         addToCart
+    );
+}
+
+const modalCheckout = document.getElementById("modal-checkout");
+console.log(modalCheckout);
+if (modalCheckout) {
+    ReactDOM.render(
+        <Provider store={store}>
+            <ModalInfo />
+        </Provider>,
+        modalCheckout
     );
 }

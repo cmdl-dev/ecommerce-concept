@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import M from "materialize-css";
 import { addItem } from "../actions/allActions";
 
 class AddToCart extends Component {
@@ -65,7 +66,12 @@ class AddToCart extends Component {
             };
             this.props.addItem(item);
         } else {
-            console.log("Please selected a size");
+            M.Toast.dismissAll();
+            /**
+             * FIXME: The round class is not making it round
+             */
+            M.toast({ html: "Please selected a size", classes: "round" });
+            // toast here
         }
     };
     render() {
@@ -90,7 +96,7 @@ class AddToCart extends Component {
                     </div>
                 </div>
                 <div className="btn-area">
-                    <div className="btn" onClick={this.clickedAddToCartBtn}>
+                    <div className="button" onClick={this.clickedAddToCartBtn}>
                         Add To Cart
                     </div>
                 </div>

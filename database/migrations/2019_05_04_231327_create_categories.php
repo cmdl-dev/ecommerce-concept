@@ -14,19 +14,19 @@ class CreateCategories extends Migration
      */
     public function up()
     {
-        // Schema::create('categories', function (Blueprint $table) {
-        //     $table->bigIncrements('id')->unsigned();
-        //     $table->string('title',200);
-        //     $table->timestamps();
-        // });
-        DB::statement('
-            CREATE TABLE categories(
-                id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                title VARCHAR(200) NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-                )
-        ');
+        Schema::create('categories', function (Blueprint $table) {
+            $table->bigIncrements('id')->unsigned();
+            $table->string('title',200);
+            $table->timestamps();
+        });
+        // DB::statement('
+        //     CREATE TABLE categories(
+        //         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        //         title VARCHAR(200) NOT NULL,
+        //         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        //         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        //         )
+        // ');
     }
 
     /**

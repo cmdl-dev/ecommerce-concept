@@ -32,22 +32,21 @@
                     width: 150%;
                 }
             }
-
         }
     }
 
     .product-detail {
         background: white;
         padding: 20px;
-        .titles{
-            .brand{
+        .titles {
+            .brand {
                 text-transform: uppercase;
                 color: red;
                 font-weight: 900;
-                font-size: .8rem;
+                font-size: 0.8rem;
                 margin-bottom: 2rem;
             }
-            .product{
+            .product {
                 text-transform: capitalize;
                 color: $black;
                 font-weight: 500;
@@ -55,20 +54,20 @@
                 margin-bottom: 1.5rem;
             }
         }
-        .details{
-            p{
+        .details {
+            p {
                 font-size: 1.1rem;
                 font-weight: 300;
                 line-height: 1.4;
                 margin-bottom: 2rem;
             }
         }
-        .add-to-cart{
+        .add-to-cart {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-gap: 20px;
-            .btn-area{
-                .btn{
+            .btn-area {
+                .button {
                     background: white;
                     border: 1px solid $black;
                     padding: 1rem;
@@ -83,28 +82,28 @@
         }
 
         .detail-section {
-            padding: 0 ;
+            padding: 0;
 
             .toggle {
                 display: none;
 
                 &:checked {
-                    &+.title+.content {
+                    & + .title + .content {
                         max-height: 300px;
                         overflow-x: hidden;
                         overflow-y: scroll;
                     }
 
-                    &+.title:before {
+                    & + .title:before {
                         transform: rotate(90deg);
                     }
                 }
             }
-            .size{
+            .size {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
             }
-            .detail{
+            .detail {
                 position: relative;
                 margin-bottom: 2rem;
             }
@@ -113,7 +112,7 @@
             .content {
                 backface-visibility: hidden;
                 transform: translateZ(0);
-                transition: all .2s;
+                transition: all 0.2s;
             }
 
             .title {
@@ -125,7 +124,7 @@
                 font-weight: 700;
                 margin-bottom: 1rem;
                 cursor: pointer;
-                &.size-title{
+                &.size-title {
                     background: $black;
                     color: $white;
                 }
@@ -133,7 +132,7 @@
 
             .title:after,
             .title:before {
-                content: '';
+                content: "";
                 position: absolute;
                 right: 1.25em;
                 top: 1.25em;
@@ -141,7 +140,7 @@
                 height: 0.75em;
                 background-color: black;
                 transition: all 0.2s;
-                &.size-title{
+                &.size-title {
                     background: $black;
                     color: $white;
                 }
@@ -149,7 +148,7 @@
 
             .size-title:after,
             .size-title:before {
-                content: '';
+                content: "";
                 background-color: $white;
             }
 
@@ -166,7 +165,7 @@
                     padding: 10px;
                     display: inline-block;
                     color: grey;
-                    transition: all .2 ease-in-out;
+                    transition: all 0.2 ease-in-out;
                     display: flex;
                     align-items: center;
                     cursor: pointer;

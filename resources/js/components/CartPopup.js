@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import M from "materialize-css";
 import { connect } from "react-redux";
 import { closingCart, removeItem } from "../actions/allActions";
 
@@ -12,6 +13,19 @@ class CartPopup extends Component {
         console.log(e.target.getAttribute("data-index"));
         this.props.removeItem(e.target.getAttribute("data-index"));
     };
+    handleOpenModal = elem => {
+        elem.open();
+    };
+    componentDidMount() {
+        var elems = document.querySelectorAll(".modal");
+        var instances = M.Modal.init(elems, {});
+        document
+            .querySelector(".checkout")
+            .addEventListener(
+                "click",
+                this.handleOpenModal.bind(null, instances[0])
+            );
+    }
     componentDidUpdate() {
         if (this.props.globalState.isCartOpen) {
             const cartPopupElement = document.getElementById("cart-popup");
@@ -44,10 +58,7 @@ class CartPopup extends Component {
                         {this.props.globalState.cartItems.map((item, indx) => {
                             return (
                                 <div key={indx} className="item">
-                                    <img
-                                        src={this.props.imgRoute}
-                                        alt="Yeezy Boost"
-                                    />
+                                    <img src={item.imgRoute} alt={item.name} />
                                     <div className="delete-btn">
                                         <div
                                             data-index={indx}
@@ -75,7 +86,7 @@ class CartPopup extends Component {
                     </div>
                 </div>
                 <div className="checkout">
-                    <div className="title">Checkout</div>
+                    <div className="title modal-trigger">Checkout</div>
                     <span className="ti-shopping-cart" />
                 </div>
             </section>

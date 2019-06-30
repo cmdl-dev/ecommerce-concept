@@ -2,7 +2,7 @@
 
 
 @section('title')
-E-Commerce Store
+E-Commerce Store | About
 @endsection
 
 @section('content')
