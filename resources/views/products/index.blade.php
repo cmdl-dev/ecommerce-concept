@@ -78,17 +78,15 @@ E-Commerce | All Products
     </div>
     <div class="all-products-grid">
         @foreach ($productArray as $product)
-        <a href='/addidas/yeezy/yeezy-boost-350-white'>
+        <a href='/product/{{$product->brand}}/{{$product->slug}}'>
             <div class="product-wrap">
                 <div class="product">
                     <div class="circle">
                         <img src="{{ asset('img/products/adidas-yeezy-boost-white.png') }}" alt="Yeezy Boost">
                     </div>
                 </div>
-                <div class="title">
-                    Boost 350 - White
-                </div>
-                <div class="price">$360.99</div>
+            <div class="title">{{$product->name}}</div>
+            <div class="price">${{$product->price}}</div>
             </div>
         </a>
         @endforeach

@@ -16,27 +16,15 @@ E-Commerce Store
     </div>
     <div class="product-detail">
         <div class="titles">
-            <div class="brand">{{$brand}}</div>
-        <div class="product">{{$productName}}</div>
+            <div class="brand">{{$product->brand}}</div>
+        <div class="product"><span class="product-name">{{$product->name}}</span><span class='price'>- ${{$product->price}}</span></div>
         </div>
         <div class="details">
-            <p>
-                The adidas Yeezy Boost 350 v2 "True Form" is one
-                of the three colorways for the silhouette that released
-                regionally in March of 2019. This colorway of the Yeezy 350
-                was available only in Europe and Russia. The “True Form”
-                Yeezy features a grey Primeknit upper with translucent
-                post-dyed monofilament side stripes. The grey palette
-                is accented with a muted orange shade that can be seen
-                under the clear stripe and translucent midsole, as well as
-                on the rear pull tab. Paired with the “Hyperspace” and
-                “Clay” colorways that also were available in specific markets
-                around the globe, this adidas Yeezy Boost 350 v2 "True Form" released
-                in limited quantities exclusively in Europe and Russia on March 16, 2019.
-            </p>
+        <p>{{$product->description}}</p>
             <div id="productAddToCart"
                 data-imgRoute={{ asset('img/products/adidas-yeezy-boost-white.png') }}
-                data-name="{{$productName}}" />
+                data-price="{{$product->price}}"
+                data-name="{{$product->name}}" />
         </div>
     </div>
 </section>

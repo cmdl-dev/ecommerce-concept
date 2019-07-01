@@ -10,7 +10,6 @@ import { closingCart, removeItem } from "../actions/allActions";
 class CartPopup extends Component {
     //
     handleRemoveItem = e => {
-        console.log(e.target.getAttribute("data-index"));
         this.props.removeItem(e.target.getAttribute("data-index"));
     };
     handleOpenModal = elem => {

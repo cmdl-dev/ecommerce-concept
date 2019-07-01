@@ -38,6 +38,7 @@
     .product-detail {
         background: white;
         padding: 20px;
+
         .titles {
             .brand {
                 text-transform: uppercase;
@@ -52,6 +53,16 @@
                 font-weight: 500;
                 font-size: 3rem;
                 margin-bottom: 1.5rem;
+                display: grid;
+                grid-template-columns: 1fr 100px;
+                .product-name {
+                    place-self: center;
+                }
+                .price {
+                    justify-self: start;
+                    align-self: center;
+                    font-size: 1.1rem;
+                }
             }
         }
         .details {
@@ -185,5 +196,24 @@
                 }
             }
         }
+    }
+}
+#modal-form {
+    .blur {
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 125%;
+            background-image: linear-gradient(120deg, white, white);
+            opacity: 0.8;
+        }
+    }
+    .preloader-wrapper {
+        position: absolute;
+        top: 50%;
+        right: 50%;
     }
 }

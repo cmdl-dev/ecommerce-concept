@@ -19,7 +19,7 @@ Route::get('/about','PageController@about');
 Route::get('/products','ProductController@index');
 Route::get('/products/new-arrivals','ProductController@newArrivals');
 // subCat === Sub Category
-Route::get('/{brand}/{subCat}/{slug}','ProductController@show');
+Route::get('/product/{brand}/{slug}','ProductController@show');
 // Cart
 Route::get('/cart/checkout','CartController@checkout');
 //User Account

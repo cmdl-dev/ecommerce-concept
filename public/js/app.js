@@ -78124,10 +78124,12 @@ if (addToCart) {
 
   var _imgRoute = addToCart.getAttribute("data-imgRoute");
 
+  var price = addToCart.getAttribute("data-price");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
     store: store
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AddToCart__WEBPACK_IMPORTED_MODULE_7__["default"], {
     itemName: itemName,
+    price: price,
     imgRoute: _imgRoute
   })), addToCart);
 }
@@ -78329,7 +78331,7 @@ function (_Component) {
       itemName: "",
       imgRoute: "",
       selectedSize: "",
-      price: 220.0,
+      price: 0,
       sizes: [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5]
     });
 
@@ -78384,7 +78386,8 @@ function (_Component) {
       materialize_css__WEBPACK_IMPORTED_MODULE_2___default.a.Collapsible.init(elems, {});
       this.setState({
         itemName: this.props.itemName,
-        imgRoute: this.props.imgRoute
+        imgRoute: this.props.imgRoute,
+        price: this.props.price
       });
     }
   }, {
@@ -78574,8 +78577,6 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(CartPopup)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "handleRemoveItem", function (e) {
-      console.log(e.target.getAttribute("data-index"));
-
       _this.props.removeItem(e.target.getAttribute("data-index"));
     });
 
@@ -78716,9 +78717,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
- // const promise = stripe.createToken(card);
-// promise
-//     .then(result => result.token)
+
 
 var ModalInfo =
 /*#__PURE__*/
@@ -78740,7 +78739,8 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       stripe: null,
-      card: null
+      card: null,
+      isLoading: false
     });
 
     return _this;
@@ -78748,13 +78748,28 @@ function (_Component) {
 
   _createClass(ModalInfo, [{
     key: "handleCardElement",
-    value: function handleCardElement() {
+    value: function handleCardElement(e) {
+      e.preventDefault();
+      this.setState({
+        isLoading: true
+      });
+      setTimeout(this.removeLoading.bind(this), 3000);
       var promise = this.state.stripe.createToken(this.state.card);
       promise.then(function (result) {
         console.log(result);
       }, function (reason) {
         console.log(reason);
       });
+    }
+  }, {
+    key: "removeLoading",
+    value: function removeLoading() {
+      this.setState({
+        isLoading: false
+      });
+      localStorage.setItem("items", JSON.stringify([]));
+      localStorage.setItem("total-price", "0");
+      window.location.href = "/";
     }
   }, {
     key: "componentDidMount",
@@ -78773,9 +78788,11 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "modal-form",
-        className: "container"
+        className: ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form col s8 " + (this.state.isLoading ? "blur" : "")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "col s12 center-align"
       }, "Payment Information"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -78844,13 +78861,46 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "wave-effect waves-light btn",
         type: "submit",
-        value: "Submit"
+        value: "Submit",
+        onClick: this.handleCardElement.bind(this)
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-field col s2 offset-s8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "modal-close red darken-1 white-text btn",
         href: "#!"
-      }, "Cancel")))));
+      }, "Cancel")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "items col s4 row"
+      }, this.props.globalState.cartItems.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "item-name col s8"
+        }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "item-name col s4"
+        }, item.price));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "divider"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title left"
+      }, "Total"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "total right"
+      }, "$", this.props.globalState.totalPrice))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "preloader-wrapper big " + (this.state.isLoading ? "active" : "")
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "spinner-layer spinner-blue-only"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "circle-clipper left active"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "circle"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "gap-patch"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "circle"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "circle-clipper right"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "circle"
+      })))));
     }
   }]);
 
@@ -78979,8 +79029,8 @@ var appStateReducer = function appStateReducer() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\tinh5\OneDrive\Projects\php\eCommerce\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\tinh5\OneDrive\Projects\php\eCommerce\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\tinh5\OneDrive\Documents\Projects\php\eCommerce\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\tinh5\OneDrive\Documents\Projects\php\eCommerce\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

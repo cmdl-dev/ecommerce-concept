@@ -8,7 +8,7 @@ class AddToCart extends Component {
         itemName: "",
         imgRoute: "",
         selectedSize: "",
-        price: 220.0,
+        price: 0,
         sizes: [
             4,
             4.5,
@@ -33,7 +33,8 @@ class AddToCart extends Component {
         M.Collapsible.init(elems, {});
         this.setState({
             itemName: this.props.itemName,
-            imgRoute: this.props.imgRoute
+            imgRoute: this.props.imgRoute,
+            price: this.props.price
         });
     }
     allSizes = () => {
@@ -66,6 +67,7 @@ class AddToCart extends Component {
                 size: this.state.selectedSize,
                 price: this.state.price
             };
+
             this.props.addItem(item);
         } else {
             M.Toast.dismissAll();

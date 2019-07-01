@@ -19,6 +19,7 @@ class CreateItemsTable extends Migration
             $table->longText('description');
             $table->string('brand');
             $table->string('slug');
+            $table->mediumText('imgRoute');
             $table->decimal('price', 8, 2);
             $table->integer('qty');
             $table->timestamps();

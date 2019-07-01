@@ -17,12 +17,13 @@ class CreateCategories extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->string('title',200);
+            $table->string('value',200);
             $table->timestamps();
         });
         // DB::statement('
         //     CREATE TABLE categories(
-        //         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         //         title VARCHAR(200) NOT NULL,
+        //         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         //         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         //         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         //         )

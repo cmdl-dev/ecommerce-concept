@@ -36,15 +36,15 @@
         <header>
             <div class="logo"><a href='/'>FreshGear</a></div>
             <div class="menu">
-                @guest
-                    <a href="/login" class="">Login</a>
-                @else
-                    <a href="javascript:void(0)">Hello {{Auth::user()->name}}</a>
-                @endguest
                 <a href="/about">About</a>
                 <a href="/products/new-arrivals">New Arrival</a>
                 <a href="/products">All Products</a>
                 <div id='cart-btn'></div>
+                {{-- @guest
+                    <a href="/login" class="">Login</a>
+                @else
+                    <a href="javascript:void(0)">Hello {{Auth::user()->name}}</a>
+                @endguest --}}
             </div>
         </header>
         {{-- End of the header  --}}
@@ -60,6 +60,9 @@
     <script>
         @yield('javascript')
     </script>
+    @if(config('app.env') == 'local')
+        <script src="http://localhost:35729/livereload.js"></script>
+    @endif
     </div>
 </body>
 

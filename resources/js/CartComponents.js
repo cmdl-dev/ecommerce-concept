@@ -37,9 +37,10 @@ const addToCart = document.getElementById("productAddToCart");
 if (addToCart) {
     const itemName = addToCart.getAttribute("data-name");
     const imgRoute = addToCart.getAttribute("data-imgRoute");
+    const price = addToCart.getAttribute("data-price");
     ReactDOM.render(
         <Provider store={store}>
-            <AddToCart itemName={itemName} imgRoute={imgRoute} />
+            <AddToCart itemName={itemName} price={price} imgRoute={imgRoute} />
         </Provider>,
         addToCart
     );
