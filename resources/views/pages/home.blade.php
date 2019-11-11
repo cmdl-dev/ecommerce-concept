@@ -10,7 +10,7 @@ E-Commerce Store
     <div class="top-section">
         <div class="product">
             <div class="circle">
-                <img src="{{ asset('img/products/adidas-yeezy-boost-white.png') }}" alt="Yeezy Boost">
+                <img src="{{ secure_asset('img/products/adidas-yeezy-boost-white.png') }}" alt="Yeezy Boost">
             </div>
         </div>
         <div class="titles">

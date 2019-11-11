@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
     <title>@yield('title')</title>
     <!-- Fonts -->
     <link href="https://cdn.jsdelivr.net/npm/lt-themify-icons@1.1.0/themify-icons.min.css" rel='stylesheet'>
@@ -23,45 +23,44 @@
         <div class="top-right links">
             @auth
             <a href="{{ url('/home') }}">Home</a>
-            @else
-            <a href="{{ route('login') }}">Login</a>
+        @else
+        <a href="{{ route('login') }}">Login</a>
 
-            @if (Route::has('register'))
-            <a href="{{ route('register') }}">Register</a>
-            @endif
-            @endauth
-        </div>
-        @endif --}}
-        {{-- Start of the header  --}}
-        <header>
-            <div class="logo"><a href='/'>FreshGear</a></div>
-            <div class="menu">
-                <a href="/about">About</a>
-                <a href="/products/new-arrivals">New Arrival</a>
-                <a href="/products">All Products</a>
-                <div id='cart-btn'></div>
-                {{-- @guest
+        @if (Route::has('register'))
+        <a href="{{ route('register') }}">Register</a>
+        @endif
+        @endauth
+    </div>
+    @endif --}}
+    {{-- Start of the header  --}}
+    <header>
+        <div class="logo"><a href='/'>FreshGear</a></div>
+        <div class="menu">
+            <a href="/about">About</a>
+            <a href="/products/new-arrivals">New Arrival</a>
+            <a href="/products">All Products</a>
+            <div id='cart-btn'></div>
+            {{-- @guest
                     <a href="/login" class="">Login</a>
                 @else
                     <a href="javascript:void(0)">Hello {{Auth::user()->name}}</a>
-                @endguest --}}
-            </div>
-        </header>
-        {{-- End of the header  --}}
-        @yield('content')
-        <div id="modal1" class="modal" >
-            <div id='modal-checkout'></div>
+            @endguest --}}
         </div>
-        {{-- Start of cart section --}}
-        <div id="cart-popup-root"
-            data-imgRoute='{{ asset('img/products/adidas-yeezy-boost-white.png') }}'></div>
-        {{-- End of the Cart--}}
-    <script src="{{asset('/js/app.js')}}"></script>
+    </header>
+    {{-- End of the header  --}}
+    @yield('content')
+    <div id="modal1" class="modal">
+        <div id='modal-checkout'></div>
+    </div>
+    {{-- Start of cart section --}}
+    <div id="cart-popup-root" data-imgRoute='{{ secure_asset('img/products/adidas-yeezy-boost-white.png') }}'></div>
+    {{-- End of the Cart--}}
+    <script src="{{secure_asset('/js/app.js')}}"></script>
     <script>
         @yield('javascript')
     </script>
     @if(config('app.env') == 'local')
-        <script src="http://localhost:35729/livereload.js"></script>
+    <script src="http://localhost:35729/livereload.js"></script>
     @endif
     </div>
 </body>

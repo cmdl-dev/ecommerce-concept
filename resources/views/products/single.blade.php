@@ -10,21 +10,18 @@ E-Commerce Store
     <div class="product-imgs">
         <div class="product">
             <div class="circle">
-                <img src="{{ asset('img/products/adidas-yeezy-boost-white.png') }}" alt="Yeezy Boost">
+                <img src="{{ secure_asset('img/products/adidas-yeezy-boost-white.png') }}" alt="Yeezy Boost">
             </div>
         </div>
     </div>
     <div class="product-detail">
         <div class="titles">
             <div class="brand">{{$product->brand}}</div>
-        <div class="product"><span class="product-name">{{$product->name}}</span><span class='price'>- ${{$product->price}}</span></div>
+            <div class="product"><span class="product-name">{{$product->name}}</span><span class='price'>- ${{$product->price}}</span></div>
         </div>
         <div class="details">
-        <p>{{$product->description}}</p>
-            <div id="productAddToCart"
-                data-imgRoute={{ asset('img/products/adidas-yeezy-boost-white.png') }}
-                data-price="{{$product->price}}"
-                data-name="{{$product->name}}" />
+            <p>{{$product->description}}</p>
+            <div id="productAddToCart" data-imgRoute={{ secure_asset('img/products/adidas-yeezy-boost-white.png') }} data-price="{{$product->price}}" data-name="{{$product->name}}" />
         </div>
     </div>
 </section>

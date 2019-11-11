@@ -10,7 +10,7 @@ E-Commerce | All Products
     <div class="filter-section">
         {{-- Start of filter --}}
         <div class="filter">
-            <input type="checkbox" class="toggle" id="gender-options" >
+            <input type="checkbox" class="toggle" id="gender-options">
             <label class='title' for="gender-options">Gender</label>
             <div class="content">
                 <div class="gender">
@@ -23,7 +23,7 @@ E-Commerce | All Products
 
         {{-- Start of filter --}}
         <div class="filter">
-            <input type="checkbox" class="toggle" id="brand-options" >
+            <input type="checkbox" class="toggle" id="brand-options">
             <label class='title' for="brand-options">Brand</label>
             <div class="content">
                 <div class="brand">
@@ -37,10 +37,10 @@ E-Commerce | All Products
             </div>
         </div>
         {{-- End of filter --}}
-    
+
         {{-- Start of filter --}}
         <div class="filter">
-            <input type="checkbox" class="toggle" id="size-options" >
+            <input type="checkbox" class="toggle" id="size-options">
             <label class='title' for="size-options">Size</label>
             <div class="content">
                 <div class="size">
@@ -60,10 +60,10 @@ E-Commerce | All Products
             </div>
         </div>
         {{-- End of filter --}}
-    
+
         {{-- Start of filter --}}
         <div class="filter">
-            <input type="checkbox" class="toggle" id="price-options" >
+            <input type="checkbox" class="toggle" id="price-options">
             <label class='title' for="price-options">Price</label>
             <div class="content">
                 <div class="price">
@@ -82,11 +82,11 @@ E-Commerce | All Products
             <div class="product-wrap">
                 <div class="product">
                     <div class="circle">
-                        <img src="{{ asset('img/products/adidas-yeezy-boost-white.png') }}" alt="Yeezy Boost">
+                        <img src="{{ secure_asset('img/products/adidas-yeezy-boost-white.png') }}" alt="Yeezy Boost">
                     </div>
                 </div>
-            <div class="title">{{$product->name}}</div>
-            <div class="price">${{$product->price}}</div>
+                <div class="title">{{$product->name}}</div>
+                <div class="price">${{$product->price}}</div>
             </div>
         </a>
         @endforeach
