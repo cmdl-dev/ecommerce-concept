@@ -37,7 +37,6 @@
         <div class="logo"><a href='/'>FreshGear</a></div>
         <div class="menu">
             <a href="/about">About</a>
-            <a href="/products/new-arrivals">New Arrival</a>
             <a href="/products">All Products</a>
             <div id='cart-btn'></div>
             {{-- @guest
